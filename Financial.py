@@ -8,8 +8,8 @@ ticker = 'HD'
 years_back = 3
 months_back = 0
 
-ma_window_1 = 50
-ma_window_2 = 100
+ma_window_1 = 30
+ma_window_2 = 90
 
 plt.style.use('ggplot')
 
@@ -42,8 +42,10 @@ plt.xticks(fontsize=12)
 plt.xlabel('Date', fontsize=14)
 
 ax1.plot(df.index, df['close'], lw=2, label='Price')
-ax1.plot(df.index, df['close'].rolling(window=ma_window_1).mean(), lw=2, label='50ma')
-ax1.plot(df.index, df['close'].rolling(window=ma_window_2).mean(), lw=2, label='100ma')
+ax1.plot(df.index, df['close'].rolling(window=ma_window_1).mean(), lw=2, 
+         label= str(ma_window_1) + 'ma')
+ax1.plot(df.index, df['close'].rolling(window=ma_window_2).mean(), lw=2, 
+         label= str(ma_window_2) + 'ma')
 
 ax1.legend()
 
