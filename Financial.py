@@ -4,9 +4,12 @@ import pandas_datareader.data as web
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-ticker = 'AAPL'
+ticker = 'HD'
 years_back = 3
 months_back = 0
+
+ma_window_1 = 50
+ma_window_2 = 100
 
 plt.style.use('ggplot')
 
@@ -39,8 +42,8 @@ plt.xticks(fontsize=12)
 plt.xlabel('Date', fontsize=14)
 
 ax1.plot(df.index, df['close'], lw=2, label='Price')
-ax1.plot(df.index, df['close'].rolling(window=50).mean(), lw=2, label='50ma')
-ax1.plot(df.index, df['close'].rolling(window=100).mean(), lw=2, label='100ma')
+ax1.plot(df.index, df['close'].rolling(window=ma_window_1).mean(), lw=2, label='50ma')
+ax1.plot(df.index, df['close'].rolling(window=ma_window_2).mean(), lw=2, label='100ma')
 
 ax1.legend()
 
